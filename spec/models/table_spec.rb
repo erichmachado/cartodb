@@ -553,7 +553,7 @@ describe Table do
       id = table.table_visualization.id
       CartoDB::Varnish.any_instance.expects(:purge)
         .times(2)
-        .with("obj.http.X-Cache-Channel ~ .*#{id}:vizjson")
+        .with("#{id}:vizjson")
         .returns(true)
 
       CartoDB::Table::PrivacyManager.any_instance
